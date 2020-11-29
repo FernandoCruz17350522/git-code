@@ -1,15 +1,25 @@
 const express = require('express');
+//monitorear las variables de entorno(todas las variables)
+require('dotenv').config();
+
 //servidor express
 const app = express();
+
+
+
+//aceso al directorio publico
+app.use(express.static('public'));
+
+
+
 //rutas
-app.get('/', (req, res)=>{
-    console.log('señor, hemos recibido una petición en /');
+/*app.get('/', (req, res)=>{
     res.json({
         ok:true,
         msg: "acaba de llegar!",
     });
-});
+});*/
 //configuracion
-app.listen(4000, () => {
-    console.log(`Backend corriendo en el puerto ${4000}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Backend corriendo en el puerto ${process.env.PORT}`);
 })
